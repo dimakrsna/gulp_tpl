@@ -1,0 +1,77 @@
+
+@test-recycling-name: 'test-recycling';
+@test-recycling-x: 0px;
+@test-recycling-y: 0px;
+@test-recycling-offset-x: 0px;
+@test-recycling-offset-y: 0px;
+@test-recycling-width: 32px;
+@test-recycling-height: 32px;
+@test-recycling-total-width: 66px;
+@test-recycling-total-height: 66px;
+@test-recycling-image: '../img/sprite-png.png';
+@test-recycling: 0px 0px 0px 0px 32px 32px 66px 66px '../img/sprite-png.png' 'test-recycling';
+@test-sprout-name: 'test-sprout';
+@test-sprout-x: 34px;
+@test-sprout-y: 0px;
+@test-sprout-offset-x: -34px;
+@test-sprout-offset-y: 0px;
+@test-sprout-width: 32px;
+@test-sprout-height: 32px;
+@test-sprout-total-width: 66px;
+@test-sprout-total-height: 66px;
+@test-sprout-image: '../img/sprite-png.png';
+@test-sprout: 34px 0px -34px 0px 32px 32px 66px 66px '../img/sprite-png.png' 'test-sprout';
+@test-tree-name: 'test-tree';
+@test-tree-x: 0px;
+@test-tree-y: 34px;
+@test-tree-offset-x: 0px;
+@test-tree-offset-y: -34px;
+@test-tree-width: 32px;
+@test-tree-height: 32px;
+@test-tree-total-width: 66px;
+@test-tree-total-height: 66px;
+@test-tree-image: '../img/sprite-png.png';
+@test-tree: 0px 34px 0px -34px 32px 32px 66px 66px '../img/sprite-png.png' 'test-tree';
+@spritesheet-width: 66px;
+@spritesheet-height: 66px;
+@spritesheet-image: '../img/sprite-png.png';
+@spritesheet-sprites: @test-recycling @test-sprout @test-tree;
+@spritesheet: 66px 66px '../img/sprite-png.png' @spritesheet-sprites;
+
+
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: e(extract(@sprite, 10));
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

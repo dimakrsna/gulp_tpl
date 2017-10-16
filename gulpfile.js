@@ -8,7 +8,7 @@ var concatCss        = require('gulp-concat-css');
 var concatJs         = require('gulp-concat'); 
 var rename           = require('gulp-rename');
 var uglify           = require('gulp-uglifyjs'); 
-var minCss           = require('gulp-clean-css'
+var minCss           = require('gulp-clean-css');
 var tinypng 				 = require('gulp-tinypng-extended');
 var spritesmith      = require('gulp.spritesmith');
 var cache            = require('gulp-cache');
@@ -179,7 +179,7 @@ gulp.task('tinypng', ['clear'], function () {
 
 
 // Запуск билда
-gulp.task('build', ['cleen', 'tinypng'], function(){
+gulp.task('build', ['tinypng', 'cleen'], function(){
 
 		// JS
 		gulp.src('src/js/main.js')
@@ -214,6 +214,10 @@ gulp.task('build', ['cleen', 'tinypng'], function(){
 		// Перенос html
 		gulp.src('src/*.html')
 				.pipe(gulp.dest('dist/'));
+
+		//перенос svg
+		gulp.src('src/img/**/*.svg')
+				.pipe(gulp.dest('dist/img/'));
 
 });
 
