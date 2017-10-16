@@ -1,0 +1,53 @@
+@import "../_variables.less";
+
+.make-grid(@prefix, @colsLength, @i: 1) when (@i =< @colsLength){
+
+	.col-@{prefix}-@{i} {
+		width: @i * (100% / @colsLength);
+	}
+	.make-grid(@prefix, @colsLength, @i + 1)
+}
+
+
+//Миксины принимают два аргумента, первый аргумент - префикс (например lg), второй агрумент - количество колонок.
+
+// .make-grid(lg, @lg-cols);
+ 
+
+.make-style(@prefix, @colsLength, @i: 2) when (@i =< @colsLength){
+
+	.foo-1(@prefix) when (@prefix = xs){
+		.col-@{prefix}-@{i} {
+			&:extend(.col-xs-1);
+		}	
+	}
+
+	.foo-2(@prefix) when (@prefix = sm){
+		.col-@{prefix}-@{i} {
+			&:extend(.col-sm-1);
+		}	
+	}
+
+	.foo-3(@prefix) when (@prefix = md){
+		.col-@{prefix}-@{i} {
+			&:extend(.col-md-1);
+		}	
+	}
+
+	.foo-4(@prefix) when (@prefix = lg){
+		.col-@{prefix}-@{i} {
+			&:extend(.col-lg-1);
+		}	
+	}
+
+	.foo-1(@prefix);
+	.foo-2(@prefix);
+	.foo-3(@prefix);
+	.foo-4(@prefix);
+
+	.make-style(@prefix, @colsLength, @i + 1)
+
+}
+
+//Миксин принимает два аргумента, первый аргумент - префикс (например lg), второй агрумент - количество колонок.
+// .make-style(lg, @lg-cols);

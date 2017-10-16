@@ -1,0 +1,38 @@
+@import "mixins/_sprite-png.less";
+@import "mixins/_sprite-svg.less";
+
+
+/*-----------------
+/		SPRITE-PNG
+------------------*/
+
+//	Генерация всех иконок .png
+	// .sprites(@spritesheet-sprites);
+
+
+//	 Пример генерации одной иконки .png
+//	.iconName {
+//		&:after {
+//			.sprite(@iconName);
+//		}
+//	}
+
+.icons-png {
+	// max-width: @spritesheet-width;
+	display: inline-block;
+}
+
+
+/*-----------------
+/		SPRITE-SVG
+------------------*/
+
+//   Пример генерации одной иконки .svg
+//   .iconName {
+//   	.iconName();
+//   }
+
+.icons-svg {
+	// background: url(@sprite-svg-path);
+	display: inline-block;
+}

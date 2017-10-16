@@ -1,0 +1,9 @@
+﻿# макеты
+layout/psd
+
+# файлы gulp
+node_modules
+
+# текстовые файлы
+*.txt
+*.docx

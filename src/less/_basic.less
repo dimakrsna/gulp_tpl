@@ -1,0 +1,80 @@
+@import "_variables.less";
+@import "mixins/_css-properties.less";
+
+/*----------------
+/			BASIC
+-----------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font: 1em/1.5 sans-serif;
+}
+
+*::selection {
+} 
+
+article, aside, main, details, figcaption, figure, footer, header, hgroup, menu, nav, section, address, {
+	display: block;
+}
+
+time {
+	display: inline-block;
+}
+
+address {
+	font-style: normal;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	img{
+		border:none;
+		outline:none;
+	}
+}
+
+input, textarea, button {
+	outline: 0;
+	border: 0;
+}
+
+button {
+	cursor: pointer;
+}
+
+figure {
+	position: relative;
+	img,
+	video,
+	object,
+	embed {
+		display: inline-block;
+		max-width: 100%;
+	} 
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}

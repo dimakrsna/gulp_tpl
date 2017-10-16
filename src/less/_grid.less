@@ -1,0 +1,109 @@
+@import "_variables.less";
+@import "mixins/_grid.less";
+
+
+/*--------------
+/			GRID
+---------------*/
+
+.container {
+	margin: 0 auto;
+}
+
+@media (min-width: @xs-min-width){
+	.container {
+		width: @xs-container;
+	}
+}
+
+@media (min-width: @sm-min-width){
+	.container {
+		width: @sm-container;
+	}
+}
+
+@media (min-width: @md-min-width){
+	.container { 
+		width: @md-container;
+	}
+}
+
+@media (min-width: @lg-min-width){
+	.container {
+		width: @lg-container;
+	}
+} 
+
+
+.col-xs-1 {
+	float: left;
+	padding: 0 @xs-padding;
+}
+
+
+.make-style(xs, @xs-cols);
+.make-grid(xs, @xs-cols);
+
+
+// mob-M
+@media (max-width: @xxs-max-width){
+
+	.container {
+		padding: 0 @xxs-padding;
+	}
+
+	.col-xs-1 {
+		width: 100%;
+	}
+
+}
+
+// mob-L
+@media (min-width: @sm-min-width){
+
+	.col-sm-1 {
+		float: left;
+		padding: 0 @sm-padding;
+	}
+	
+	.make-style(sm, @sm-cols);
+	.make-grid(sm, @sm-cols);
+}
+
+// Tablet
+@media (min-width: @md-min-width){
+	
+	.col-md-1 {
+		float: left;
+		padding: 0 @md-padding;
+	}
+	
+	.make-style(md, @md-cols);
+	.make-grid(md, @md-cols);
+
+}
+
+// Laptop
+@media (min-width: @lg-min-width){
+	.col-lg-1 {
+		float: left;
+		padding: 0 @lg-padding;
+	}
+
+	.make-style(lg, @lg-cols);
+	.make-grid(lg, @lg-cols);
+
+}
+
+.container:before,
+.container:after,
+.clear:before,
+.clear:after {
+	content: " ";
+	display: table;
+}
+
+.container:after,
+.clear:after {
+	clear: both;
+}
